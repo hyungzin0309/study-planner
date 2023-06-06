@@ -13,7 +13,6 @@ public class MoimTest {
         Assertions.assertTrue(m2.isRequestFull());
         Moim m3 = new Moim(0, 0);
         Assertions.assertFalse(m3.isRequestFull());
-        //임시커밋용
     }
 
 }
