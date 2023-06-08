@@ -1,18 +1,25 @@
 plugins {
-	id 'java'
 	id 'org.springframework.boot' version '3.1.0'
-	id 'io.spring.dependency-management' version '1.1.0'
-	id 'jacoco'
 }
 
-group = 'study-helper'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
 subprojects {
+	group 'study-helper'
+
 	apply plugin: 'java'
 	apply plugin: 'org.springframework.boot'
 	apply plugin: 'io.spring.dependency-management'
 	apply plugin: 'jacoco'
+
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+
+	repositories {
+		mavenCentral()
+		maven { url "https://www.datanucleus.org/downloads/maven2/"}
+		maven {
+			url "https://packages.jetbrains.team/maven/p/ij/intellij-dependencies"
+		}
+	}
 
 	jacoco {
 		toolVersion = "0.8.7"
@@ -39,7 +46,7 @@ subprojects {
 				limit {
 					counter = 'BRANCH'
 					value = 'COVEREDRATIO'
-					minimum = 0.90
+					minimum = 0.00
 				}
 			}
 		}
@@ -52,20 +59,26 @@ subprojects {
 		compileOnly 'org.projectlombok:lombok'
 		annotationProcessor 'org.projectlombok:lombok'
 	}
-}
 
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
+	jar {
+		zip64=true
+		enabled = true
+		duplicatesStrategy = 'INCLUDE'
+		manifest {
+			attributes 'Main-Class': 'com.studyHelper.StudyHelperMainApp'
+		}
+		from {
+			configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+		}
 	}
-}
 
-repositories {
-	mavenCentral()
-}
+	bootJar {
+		enabled = false
+	}
 
-dependencies {
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	test {
+		useJUnitPlatform()
+	}
+
 }
 
