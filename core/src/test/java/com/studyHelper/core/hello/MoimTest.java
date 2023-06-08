@@ -1,7 +1,4 @@
-package com.studyHelper.domain.hello;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+package com.studyHelper.core.hello;
 
 public class MoimTest {
 

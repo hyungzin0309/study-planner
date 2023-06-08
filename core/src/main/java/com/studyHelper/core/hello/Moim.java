@@ -1,4 +1,4 @@
-package com.studyHelper.domain.hello;
+package com.studyHelper.core.hello;
 
 import lombok.AllArgsConstructor;
 
