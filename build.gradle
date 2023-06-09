@@ -60,22 +60,6 @@ subprojects {
 		annotationProcessor 'org.projectlombok:lombok'
 	}
 
-	jar {
-		zip64=true
-		enabled = true
-		duplicatesStrategy = 'INCLUDE'
-		manifest {
-			attributes 'Main-Class': 'com.studyHelper.StudyHelperMainApp'
-		}
-		from {
-			configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-		}
-	}
-
-	bootJar {
-		enabled = false
-	}
-
 	test {
 		useJUnitPlatform()
 	}

@@ -1,8 +1,8 @@
-plugins {
-    id 'java'
-}
-
 dependencies {
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
     implementation(project(':core'))
+}
+
+bootJar {
+    enabled = false
 }

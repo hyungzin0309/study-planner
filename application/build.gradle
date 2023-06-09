@@ -1,7 +1,3 @@
-plugins {
-    id 'java'
-}
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-freemarker'
     implementation 'org.springframework.boot:spring-boot-starter'
@@ -13,7 +9,8 @@ dependencies {
     implementation(project(':presentation'))
 }
 
-jar {
+bootJar {
     archiveFileName = 'application.jar'
+    mainClass.set('com.studyHelper.StudyHelperMainApp')
 }
 
