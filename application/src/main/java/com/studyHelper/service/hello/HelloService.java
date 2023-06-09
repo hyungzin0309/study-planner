@@ -1,7 +1,7 @@
 package com.studyHelper.service.hello;
 
-import com.studyHelper.domain.hello.Hello;
-import com.studyHelper.domain.hello.HelloRepository;
+import com.studyHelper.core.hello.Hello;
+import com.studyHelper.core.hello.HelloRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
