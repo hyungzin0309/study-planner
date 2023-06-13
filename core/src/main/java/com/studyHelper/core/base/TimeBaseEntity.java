@@ -1,24 +1,21 @@
 package com.studyHelper.core.base;
 
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
-import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
 @MappedSuperclass
 @Getter
-public class BaseEntity {
+@EntityListeners(AuditingEntityListener.class)
+public abstract class TimeBaseEntity {
 
     @CreatedDate
     private LocalDateTime createdDate;
     @LastModifiedDate
-    private LocalDateTime lasModifiedDate;
-    @CreatedBy
-    private Long createUser;
-    @LastModifiedBy
-    private Long lastModifyingUser;
+    private LocalDateTime lastModifiedDate;
 }
