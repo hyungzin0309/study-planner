@@ -13,7 +13,7 @@ public class TicketService {
     private final TicketRepository ticketRepository;
 
     @Transactional
-    public void save(Ticket ticket){
+    public void save(Ticket ticket){ // test
         ticketRepository.save(ticket);
     }
 }
