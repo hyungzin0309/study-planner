@@ -9,5 +9,5 @@ import org.springframework.stereotype.Component;
 @Configuration
 @EnableJpaRepositories(basePackages = "com.studyHelper.domain")
 @ComponentScan
-public class CoreConfigure {
+public class CoreConfigure { // 억커
 }
