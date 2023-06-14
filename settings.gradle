@@ -1,7 +1,5 @@
 rootProject.name = 'planner'
-include 'api'
 include 'core'
-include 'data-access'
 include 'application'
 include 'presentation'
 

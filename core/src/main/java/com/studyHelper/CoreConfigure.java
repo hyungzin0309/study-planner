@@ -1,13 +1,11 @@
 package com.studyHelper;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.context.annotation.*;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.stereotype.Component;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.studyHelper.domain")
+@EnableJpaRepositories(basePackages = "com.studyHelper.core")
 @ComponentScan
 public class CoreConfigure { // 억커
 }
