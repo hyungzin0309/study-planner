@@ -1,6 +1,5 @@
 package com.studyHelper.core.base;
 
-import com.studyHelper.core.user.User;
 import jakarta.persistence.MappedSuperclass;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -9,7 +8,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 public abstract class UserBaseEntity extends TimeBaseEntity{
 
     @CreatedBy
-    private User createUser;
+    private Long createUser;
     @LastModifiedBy
-    private User lastModifyingUser;
+    private Long lastModifyingUser;
 }

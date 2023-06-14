@@ -3,10 +3,7 @@ package com.studyHelper.core.ticket;
 import com.studyHelper.core.base.TimeBaseEntity;
 import com.studyHelper.core.team.Team;
 import com.studyHelper.core.user.User;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -17,7 +14,9 @@ public class Ticket extends TimeBaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @ManyToOne @JoinColumn(name = "user_id")
     User owner;
+    @ManyToOne @JoinColumn(name = "team_id")
     Team teamId;
     String title;
     String description;
