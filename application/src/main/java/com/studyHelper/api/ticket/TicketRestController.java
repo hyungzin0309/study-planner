@@ -1,6 +1,6 @@
-package com.studyHelper.api;
+package com.studyHelper.api.ticket;
 
-import com.studyHelper.service.TicketService;
+import com.studyHelper.service.ticket.TicketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

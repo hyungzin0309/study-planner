@@ -1,4 +1,4 @@
-package com.studyHelper.api;
+package com.studyHelper.api.ticket;
 
 import com.studyHelper.core.ticket.Ticket;
 import lombok.Data;

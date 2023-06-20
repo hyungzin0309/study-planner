@@ -1,4 +1,4 @@
-package com.studyHelper.service;
+package com.studyHelper.service.ticket;
 
 import com.studyHelper.core.ticket.Ticket;
 import com.studyHelper.core.ticket.TicketRepository;
