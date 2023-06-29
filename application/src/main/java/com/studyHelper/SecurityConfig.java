@@ -35,7 +35,9 @@ public class SecurityConfig {
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
                         .requestMatchers("/register", "/register/form").permitAll()
                         .anyRequest().authenticated()
-                ).formLogin(login -> login
+                )
+                .httpBasic(withDefaults())
+                .formLogin(login -> login
                         .loginPage("/login/form")
                         .loginProcessingUrl("/login")
                         .usernameParameter("loginId")

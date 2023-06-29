@@ -10,7 +10,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 public abstract class UserBaseEntity extends TimeBaseEntity{
 
     @CreatedBy
-    private Long createUser;
+    private String createUser;
     @LastModifiedBy
-    private Long lastModifyingUser;
+    private String lastModifyingUser;
 }
