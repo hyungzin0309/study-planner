@@ -17,6 +17,7 @@ public class UserValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
+        //dlkajflkajsldkgjalsjdglajk
         UserForm form = (UserForm)target;
         if(!StringUtils.hasText(form.getLoginId())) errors.rejectValue("loginId", "loginId.empty");
         if(!StringUtils.hasText(form.getPassword())) errors.rejectValue("password", "password.empty");
