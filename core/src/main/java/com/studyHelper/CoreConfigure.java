@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.studyHelper.core")
 @ComponentScan
-public class CoreConfigure { // 억커
+public class CoreConfigure {
 }

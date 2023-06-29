@@ -21,6 +21,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
         Optional<User> user = userRepository.findByLoginId(loginId);
         if(user.isEmpty()) throw new RuntimeException("User not found...");
-        return new org.springframework.security.core.userdetails.User(user.get().getLoginId(), user.get().getPassword(), new ArrayList<>());
+        return new org.springframework.security.core.userdetails.User(String.valueOf(user.get().getId()), user.get().getPassword(), new ArrayList<>());
     }
 }

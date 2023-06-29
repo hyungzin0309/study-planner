@@ -1,6 +1,7 @@
 package com.studyHelper.core.ticket;
 
 import com.studyHelper.core.base.TimeBaseEntity;
+import com.studyHelper.core.base.UserBaseEntity;
 import com.studyHelper.core.team.Team;
 import com.studyHelper.core.user.User;
 import jakarta.persistence.*;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-public class Ticket extends TimeBaseEntity {
+public class Ticket extends UserBaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;

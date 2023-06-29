@@ -3,7 +3,6 @@ package com.studyHelper.api.user;
 import com.studyHelper.core.user.User;
 import lombok.Data;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 @Data
@@ -11,6 +10,7 @@ public class UserForm {
 
     private Long id;
     private String loginId;
+
     private String password;
     private String userName;
     private String email;

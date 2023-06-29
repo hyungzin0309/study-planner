@@ -15,7 +15,7 @@ public class TicketRestController {
     private final TicketService ticketService;
 
     @PostMapping("/")
-    public void saveTicket(@RequestBody TicketForm form){
+    public void saveTicket(TicketForm form){
         ticketService.save(form.toEntity());
     }
 }
