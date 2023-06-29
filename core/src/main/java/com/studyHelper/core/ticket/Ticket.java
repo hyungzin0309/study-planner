@@ -7,17 +7,20 @@ import com.studyHelper.core.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchProfile;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@Setter
 public class Ticket extends UserBaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @ManyToOne @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     User owner;
     @ManyToOne @JoinColumn(name = "team_id")
     Team teamId;
@@ -32,6 +35,10 @@ public class Ticket extends UserBaseEntity {
         result.title = title;
         result.description = description;
         return result;
+    }
+
+    public void setOwner(User owner){
+        this.owner = owner;
     }
 
 }
