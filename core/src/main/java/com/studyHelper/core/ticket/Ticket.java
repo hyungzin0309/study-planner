@@ -1,16 +1,19 @@
 package com.studyHelper.core.ticket;
 
 import com.studyHelper.core.base.TimeBaseEntity;
+import com.studyHelper.core.base.UserBaseEntity;
 import com.studyHelper.core.team.Team;
 import com.studyHelper.core.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
-public class Ticket extends TimeBaseEntity {
+@Setter
+public class Ticket extends UserBaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;

@@ -1,6 +1,6 @@
-package com.studyHelper.api;
+package com.studyHelper.api.ticket;
 
-import com.studyHelper.service.TicketService;
+import com.studyHelper.service.ticket.TicketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +15,7 @@ public class TicketRestController {
     private final TicketService ticketService;
 
     @PostMapping("/")
-    public void saveTicket(@RequestBody TicketForm form){
+    public void saveTicket(TicketForm form){
         ticketService.save(form.toEntity());
     }
 }
