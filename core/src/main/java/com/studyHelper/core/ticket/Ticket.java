@@ -5,9 +5,7 @@ import com.studyHelper.core.base.UserBaseEntity;
 import com.studyHelper.core.team.Team;
 import com.studyHelper.core.user.User;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchProfile;
 
@@ -15,6 +13,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Ticket extends UserBaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,22 +24,21 @@ public class Ticket extends UserBaseEntity {
     @JoinColumn(name = "user_id")
     User owner;
     @ManyToOne @JoinColumn(name = "team_id")
-    Team teamId;
+    Team team;
     String title;
     String description;
-    TicketStatus ticketStatus;
+    @Builder.Default
+    @Enumerated(EnumType.STRING)
+    TicketStatus ticketStatus = TicketStatus.TODO;
     LocalDateTime startedDate;
     LocalDateTime completedDate;
 
-    public static Ticket of(String title, String description){
-        Ticket result = new Ticket();
-        result.title = title;
-        result.description = description;
-        return result;
-    }
-
     public void setOwner(User owner){
         this.owner = owner;
+    }
+
+    public void updateStatus(TicketStatus status){
+        ticketStatus = status;
     }
 
 }

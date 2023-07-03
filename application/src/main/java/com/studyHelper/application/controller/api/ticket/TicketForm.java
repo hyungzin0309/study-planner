@@ -1,4 +1,4 @@
-package com.studyHelper.api.ticket;
+package com.studyHelper.application.controller.api.ticket;
 
 import com.studyHelper.core.ticket.Ticket;
 import lombok.Data;
@@ -12,7 +12,10 @@ public class TicketForm implements Serializable {
     String description;
 
     public Ticket toEntity(){
-        return Ticket.of(title, description);
+        return Ticket.builder()
+                .title(title)
+                .description(description)
+                .build();
     }
 
 

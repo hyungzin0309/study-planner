@@ -1,4 +1,4 @@
-package com.studyHelper.api.user;
+package com.studyHelper.application.controller.api.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;

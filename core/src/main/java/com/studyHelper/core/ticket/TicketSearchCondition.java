@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class TicketSearchCondition {
 
-    private String title;
-    private TicketStatus status;
+    private String text;
+    private String status;
     private String startDate;
     private String endDate;
 }
