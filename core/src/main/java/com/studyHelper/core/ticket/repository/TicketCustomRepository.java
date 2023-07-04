@@ -1,5 +1,6 @@
 package com.studyHelper.core.ticket.repository;
 
+import com.studyHelper.core.common.searchCondition.sort.SortCondition;
 import com.studyHelper.core.ticket.Ticket;
 import com.studyHelper.core.ticket.TicketSearchCondition;
 

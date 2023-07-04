@@ -1,13 +1,10 @@
 package com.studyHelper.core.ticket;
 
-import com.studyHelper.core.base.TimeBaseEntity;
 import com.studyHelper.core.base.UserBaseEntity;
 import com.studyHelper.core.team.Team;
 import com.studyHelper.core.user.User;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchProfile;
 
 import java.time.LocalDateTime;
 
@@ -30,6 +27,7 @@ public class Ticket extends UserBaseEntity {
     @Builder.Default
     @Enumerated(EnumType.STRING)
     TicketStatus ticketStatus = TicketStatus.TODO;
+    TicketImportance importance;
     LocalDateTime startedDate;
     LocalDateTime completedDate;
 
