@@ -1,4 +1,4 @@
-package com.studyHelper;
+package com.studyHelper.security;
 
 import jakarta.servlet.DispatcherType;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.web.cors.CorsConfiguration;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -45,6 +46,7 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login")
                         .usernameParameter("loginId")
                         .passwordParameter("password")
+                        .failureHandler(customAuthenticationFailureHandler())
                         .successHandler((request, response, authentication) -> {
                             response.getWriter().write("{\"message\": \"login success\"}");
                         })
@@ -52,6 +54,11 @@ public class SecurityConfig {
                 ).logout(withDefaults());
 
         return http.build();
+    }
+
+    @Bean
+    public AuthenticationFailureHandler customAuthenticationFailureHandler() {
+        return new CustomAuthenticationFailureHandler();
     }
 
     @Autowired

@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useContext} from 'react';
 import axios from 'axios';
 import qs from 'qs';
 import {useNavigate} from "react-router-dom";
+import { UserContext } from "../UserContext";
+
 
 function Login() {
+    const { login } = useContext(UserContext);
     const [inputId, setInputId] = useState('')
     const [inputPw, setInputPw] = useState('')
     const navigate = useNavigate();
@@ -29,7 +32,8 @@ function Login() {
         })
             .then(res => {
                 console.log(res);
-                navigate('/main')
+                login(res.data);
+                navigate('/')
             })
             .catch(error => {
                 console.error(error);

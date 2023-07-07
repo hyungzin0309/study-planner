@@ -1,4 +1,4 @@
-package com.studyHelper.application.service.user;
+package com.studyHelper.security;
 
 import com.studyHelper.core.user.User;
 import com.studyHelper.core.user.UserRepository;
