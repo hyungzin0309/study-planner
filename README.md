@@ -2,4 +2,4 @@
 공부 계획 및 진행 관리 어플리케이션
 
 [Used Skills]
-Spring(Java), Mysql, JPA, React
+Spring(Java), Mysql, JPA, React, JUnit
