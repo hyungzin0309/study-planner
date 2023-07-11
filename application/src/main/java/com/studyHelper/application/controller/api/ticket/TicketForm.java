@@ -1,6 +1,7 @@
 package com.studyHelper.application.controller.api.ticket;
 
 import com.studyHelper.core.ticket.Ticket;
+import com.studyHelper.core.ticket.TicketImportance;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ public class TicketForm implements Serializable {
 
     String title;
     String description;
+    TicketImportance importance;
 
     public Ticket toEntity(){
         return Ticket.builder()

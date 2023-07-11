@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import axios from 'axios';
+import api from '../components/api';
 import qs from 'qs';
 import {useNavigate} from "react-router-dom";
 import { UserContext } from "../UserContext";
@@ -22,13 +22,14 @@ function Login() {
 
     // login 버튼 클릭 이벤트
     const onClickLogin = () => {
-        axios.post('http://localhost:8080/login', qs.stringify({
+        api.post('/login', qs.stringify({
             loginId: inputId,
             password: inputPw
         }), {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-            }
+            },
+            withCredentials: true
         })
             .then(res => {
                 console.log(res);

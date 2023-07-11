@@ -15,6 +15,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.web.cors.CorsConfiguration;
 
+import java.util.Arrays;
+
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
@@ -33,7 +35,14 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .cors(cors -> cors
-                        .configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()))
+                        .configurationSource(request -> {
+                            CorsConfiguration configuration = new CorsConfiguration();
+                            configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000")); // 클라이언트 URL
+                            configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+                            configuration.setAllowedHeaders(Arrays.asList("*"));
+                            configuration.setAllowCredentials(true);
+                            return configuration;
+                        }))
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
@@ -42,7 +51,6 @@ public class SecurityConfig {
                 )
                 .httpBasic(withDefaults())
                 .formLogin(login -> login
-                        .loginPage("/login/form")
                         .loginProcessingUrl("/login")
                         .usernameParameter("loginId")
                         .passwordParameter("password")

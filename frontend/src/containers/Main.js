@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import React, {useContext} from "react";
 import { UserContext } from "../UserContext";
-import axios from "axios";
+import api from "../components/api";
 
 
 function Main() {
@@ -9,16 +9,17 @@ function Main() {
     const { user, logout } = useContext(UserContext);
     const navigate = useNavigate();
 
+    console.log(!user)
     if (!user) {
         navigate('/login');
     }
 
     const createTicket = () => {
-        // 티켓 생성 로직
+        navigate('/create-ticket')
     };
 
     const logoutFunc = () => {
-        axios.post('http://localhost:8080/logout')
+        api.post('/logout')
             .then(() => {
                 logout();
                 navigate('/login'); // 로그아웃 후 로그인 페이지로 이동
