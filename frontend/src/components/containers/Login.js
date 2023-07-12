@@ -1,8 +1,8 @@
 import React, {useState, useContext} from 'react';
-import api from '../components/api';
+import api from '../api';
 import qs from 'qs';
 import {useNavigate} from "react-router-dom";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../../UserContext";
 
 
 function Login() {

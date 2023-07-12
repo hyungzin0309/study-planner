@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
-import LoginPage from "./containers/Login";
+import LoginPage from "./components/containers/Login";
 
 function PrivateRoute({children}) {
     const { user } = useContext(UserContext);

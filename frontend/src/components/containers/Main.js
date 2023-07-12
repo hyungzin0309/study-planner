@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import React, {useContext} from "react";
-import { UserContext } from "../UserContext";
-import api from "../components/api";
+import { UserContext } from "../../UserContext";
+import api from "../api";
 
 
 function Main() {
