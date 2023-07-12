@@ -18,7 +18,7 @@ function CreateTicket() {
             importance
         };
 
-        axios.post('http://localhost:8080/api/ticket/save', newTicket, {withCredentials : true})
+        api.post('/api/ticket/save', newTicket)
             .then((res) => {
                 console.log(res);
                 // navigate('/');

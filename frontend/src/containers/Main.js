@@ -6,13 +6,8 @@ import api from "../components/api";
 
 function Main() {
 
-    const { user, logout } = useContext(UserContext);
+    const { logout } = useContext(UserContext);
     const navigate = useNavigate();
-
-    console.log(!user)
-    if (!user) {
-        navigate('/login');
-    }
 
     const createTicket = () => {
         navigate('/create-ticket')
