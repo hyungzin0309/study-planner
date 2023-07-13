@@ -7,13 +7,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 
 @Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User extends TimeBaseEntity {
+public class User {
 
     @Id @GeneratedValue @Column(name = "user_id")
     private Long id;
@@ -21,5 +23,6 @@ public class User extends TimeBaseEntity {
     private String password;
     private String userName;
     private String email;
+    private LocalDateTime createdDate;
 
 }

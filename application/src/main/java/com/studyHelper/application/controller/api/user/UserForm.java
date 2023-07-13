@@ -5,6 +5,8 @@ import lombok.Data;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 
+import java.time.LocalDateTime;
+
 @Data
 public class UserForm {
 
@@ -22,6 +24,7 @@ public class UserForm {
                 .password(passwordEncoder.encode(this.password))
                 .userName(this.userName)
                 .email(this.email)
+                .createdDate(LocalDateTime.now())
                 .build();
     }
 

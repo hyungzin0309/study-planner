@@ -20,11 +20,9 @@ import style from "./Form.css"
             }), {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                withCredentials: true
+                }
             })
                 .then(res => {
-                    console.log(res);
                     login(res.data);
                     navigate('/')
                 })
