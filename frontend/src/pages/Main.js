@@ -10,7 +10,7 @@ function Main() {
     const navigate = useNavigate();
 
     const createTicket = () => {
-        navigate('/create-ticket')
+        navigate('/ticket/create')
     };
 
     const logoutFunc = () => {
