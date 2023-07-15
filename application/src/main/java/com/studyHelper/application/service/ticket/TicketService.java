@@ -26,7 +26,8 @@ public class TicketService {
     }
 
     @Transactional(readOnly = true)
-    public List<Ticket> search(TicketSearchCondition condition){
+    public List<Ticket> findByUser(TicketSearchCondition condition){
+        condition.addUserCondition(userService.getAuthenticatedUser().getId());
         return ticketRepository.search(condition);
     }
 

@@ -13,6 +13,11 @@ function Main() {
         navigate('/ticket/create')
     };
 
+    const ticketList = () => {
+        navigate('/ticket')
+    };
+
+
     const logoutFunc = () => {
         api.post('/logout')
             .then(() => {
@@ -28,6 +33,7 @@ function Main() {
         <div>
             <h2>Main</h2>
             <button onClick={createTicket}>티켓 생성</button>
+            <button onClick={ticketList}>티켓</button>
             <button onClick={logoutFunc}>로그아웃</button>
         </div>
     );

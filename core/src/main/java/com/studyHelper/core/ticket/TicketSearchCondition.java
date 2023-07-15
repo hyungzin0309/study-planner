@@ -3,8 +3,9 @@ package com.studyHelper.core.ticket;
 import com.studyHelper.core.common.searchCondition.sort.SortCondition;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class TicketSearchCondition {
 
@@ -12,5 +13,11 @@ public class TicketSearchCondition {
     private TicketStatus status;
     private String startDate;
     private String endDate;
+    private Long userId;
+
+    public TicketSearchCondition addUserCondition(Long userId){
+        this.userId = userId;
+        return this;
+    }
 
 }

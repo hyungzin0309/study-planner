@@ -22,9 +22,9 @@ public class TicketRestController {
         ticketService.save(form.toEntity());
     }
 
-    @GetMapping("/search")
-    public List<TicketDto> search(TicketSearchCondition condition){
-        return ticketService.search(condition).stream().map(TicketDto::new).collect(Collectors.toList());
+    @GetMapping()
+    public List<TicketDto> getTickets(TicketSearchCondition condition){
+        return ticketService.findByUser(condition).stream().map(TicketDto::new).collect(Collectors.toList());
     }
 
     @PostMapping("/update/status/{id}")
