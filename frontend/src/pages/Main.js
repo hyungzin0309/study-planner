@@ -9,6 +9,14 @@ function Main() {
     const { logout } = useContext(UserContext);
     const navigate = useNavigate();
 
+    const createPlan = () => {
+        navigate('/plan/create')
+    };
+
+    const planList = () => {
+        navigate('/plan')
+    };
+
     const createTicket = () => {
         navigate('/ticket/create')
     };
@@ -32,6 +40,8 @@ function Main() {
     return (
         <div>
             <h2>Main</h2>
+            <button onClick={createPlan}>플랜 생성</button>
+            <button onClick={planList}>플랜</button>
             <button onClick={createTicket}>티켓 생성</button>
             <button onClick={ticketList}>티켓</button>
             <button onClick={logoutFunc}>로그아웃</button>
