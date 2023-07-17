@@ -30,7 +30,7 @@ public class TicketCustomRepositoryImpl implements TicketCustomRepository{
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Ticket> search(TicketSearchCondition condition) {
+    public List<Ticket> findByCondition(TicketSearchCondition condition) {
         return queryFactory.select(ticket)
                 .from(ticket)
                 .where(allCondition(condition))

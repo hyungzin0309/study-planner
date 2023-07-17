@@ -1,6 +1,5 @@
 package com.studyHelper.application.service.ticket;
 
-import com.studyHelper.core.common.searchCondition.sort.SortCondition;
 import com.studyHelper.core.ticket.Ticket;
 import com.studyHelper.core.ticket.TicketStatus;
 import com.studyHelper.core.ticket.repository.TicketRepository;
@@ -28,7 +27,7 @@ public class TicketService {
     @Transactional(readOnly = true)
     public List<Ticket> findByUser(TicketSearchCondition condition){
         condition.addUserCondition(userService.getAuthenticatedUser().getId());
-        return ticketRepository.search(condition);
+        return ticketRepository.findByCondition(condition);
     }
 
     public void statusUpdate(Long id, TicketStatus status){

@@ -2,10 +2,13 @@ package com.studyHelper.application.service.plan;
 
 import com.studyHelper.application.service.user.UserService;
 import com.studyHelper.core.plan.Plan;
+import com.studyHelper.core.plan.PlanSearchCondition;
 import com.studyHelper.core.plan.repository.PlanRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,5 +24,8 @@ public class PlanService {
     }
 
 
-
+    public List<Plan> findByUser(PlanSearchCondition condition) {
+        condition.setOwnerId(userService.getAuthenticatedUser().getId());
+        return planRepository.findByCondition(condition);
+    }
 }
