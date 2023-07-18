@@ -23,6 +23,7 @@ import style from "./Form.css"
                 }
             })
                 .then(res => {
+                    localStorage.setItem('plannerAppUser', JSON.stringify(res.data));
                     login(res.data);
                     navigate('/')
                 })

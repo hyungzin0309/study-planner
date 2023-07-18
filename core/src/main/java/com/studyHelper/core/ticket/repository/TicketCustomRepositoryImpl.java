@@ -40,17 +40,13 @@ public class TicketCustomRepositoryImpl implements TicketCustomRepository{
     private BooleanBuilder allCondition(TicketSearchCondition condition){
         BooleanBuilder builder = new BooleanBuilder();
         return builder
-                .and(titleContains(condition.getText()))
-                .and(descriptionContains(condition.getText()))
+                .and(textContains(condition.getText()))
                 .and(statusEqual(condition.getStatus()));
     }
 
-    private BooleanExpression titleContains(String title){
-        return StringUtils.hasText(title) ? ticket.title.contains(title) : null;
-    }
-
-    private BooleanExpression descriptionContains(String description){
-        return StringUtils.hasText(description) ? ticket.description.contains(description) : null;
+    private BooleanExpression textContains(String text){
+        return StringUtils.hasText(text) ?
+                ticket.title.contains(text).or(ticket.description.contains(text)) : null;
     }
 
     private BooleanExpression statusEqual(TicketStatus status){
