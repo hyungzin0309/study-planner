@@ -1,6 +1,6 @@
-package com.studyHelper.application.controller.controller.user;
+package com.studyHelper.api.controller.controller.user;
 
-import com.studyHelper.application.controller.api.user.UserForm;
+import com.studyHelper.api.controller.api.user.UserForm;
 import com.studyHelper.application.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

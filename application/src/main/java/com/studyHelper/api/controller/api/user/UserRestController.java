@@ -1,4 +1,4 @@
-package com.studyHelper.application.controller.api.user;
+package com.studyHelper.api.controller.api.user;
 
 import com.studyHelper.application.service.user.UserService;
 import lombok.RequiredArgsConstructor;

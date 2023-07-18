@@ -1,4 +1,4 @@
-package com.studyHelper.application.controller.api.plan;
+package com.studyHelper.api.controller.api.plan;
 
 import com.studyHelper.application.service.plan.PlanService;
 import com.studyHelper.core.plan.PlanSearchCondition;
@@ -25,6 +25,6 @@ public class PlanRestController {
 
     @GetMapping("")
     public List<PlanDto> list(PlanSearchCondition condition){
-        return planService.findByUser(condition).stream().map(PlanDto::new).collect(Collectors.toCollection());
+        return planService.findByUser(condition).stream().map(PlanDto::new).collect(Collectors.toList());
     }
 }

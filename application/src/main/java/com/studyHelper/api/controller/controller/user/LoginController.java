@@ -1,4 +1,4 @@
-package com.studyHelper.application.controller.controller.user;
+package com.studyHelper.api.controller.controller.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

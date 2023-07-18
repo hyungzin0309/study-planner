@@ -1,6 +1,5 @@
-package com.studyHelper.application.controller.api.ticket;
+package com.studyHelper.api.controller.api.ticket;
 
-import com.studyHelper.core.common.searchCondition.sort.SortCondition;
 import com.studyHelper.core.ticket.TicketSearchCondition;
 import com.studyHelper.core.ticket.TicketStatus;
 import com.studyHelper.application.service.ticket.TicketService;

@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 
 import static com.studyHelper.core.plan.QPlan.plan;
+import static com.studyHelper.core.user.QUser.user;
 
 @Repository
 @RequiredArgsConstructor
@@ -24,7 +25,7 @@ public class PlanCustomRepositoryImpl implements PlanCustomRepository{
     public List<Plan> findByCondition(PlanSearchCondition condition) {
         return queryFactory
                 .select(plan)
-                .from(plan)
+                .leftJoin(plan.owner, user)
                 .where(allCondition(condition))
                 .fetch();
     }
@@ -43,6 +44,6 @@ public class PlanCustomRepositoryImpl implements PlanCustomRepository{
 
     private BooleanExpression ownerEq(Long ownerId){
         return ObjectUtils.isEmpty(ownerId)?
-                null : plan.user.id.eq(ownerId);
+                null : plan.owner.isNotNull().and(plan.owner.id.eq(ownerId));
     }
 }

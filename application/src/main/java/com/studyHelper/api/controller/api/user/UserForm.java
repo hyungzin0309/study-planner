@@ -1,4 +1,4 @@
-package com.studyHelper.application.controller.api.user;
+package com.studyHelper.api.controller.api.user;
 
 import com.studyHelper.core.user.User;
 import lombok.Data;

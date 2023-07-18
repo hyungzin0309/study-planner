@@ -1,4 +1,4 @@
-package com.studyHelper.application.controller.api.ticket;
+package com.studyHelper.api.controller.api.ticket;
 
 import com.studyHelper.core.ticket.Ticket;
 import com.studyHelper.core.ticket.TicketImportance;

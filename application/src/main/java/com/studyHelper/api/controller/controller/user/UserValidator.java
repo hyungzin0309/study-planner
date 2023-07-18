@@ -1,6 +1,6 @@
-package com.studyHelper.application.controller.controller.user;
+package com.studyHelper.api.controller.controller.user;
 
-import com.studyHelper.application.controller.api.user.UserForm;
+import com.studyHelper.api.controller.api.user.UserForm;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;

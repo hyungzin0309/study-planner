@@ -1,4 +1,4 @@
-package com.studyHelper.application.controller.api.plan;
+package com.studyHelper.api.controller.api.plan;
 
 import com.studyHelper.core.plan.Plan;
 import lombok.Data;

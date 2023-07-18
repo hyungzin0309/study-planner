@@ -1,4 +1,4 @@
-package com.studyHelper.application.controller.controller.home;
+package com.studyHelper.api.controller.controller.home;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

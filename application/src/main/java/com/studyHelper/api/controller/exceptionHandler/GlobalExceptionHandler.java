@@ -1,4 +1,4 @@
-package com.studyHelper.application.controller.exceptionHandler;
+package com.studyHelper.api.controller.exceptionHandler;
 
 import com.studyHelper.application.service.common.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
