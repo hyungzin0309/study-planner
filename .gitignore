@@ -1,6 +1,11 @@
 # Created by https://www.toptal.com/developers/gitignore/api/java,macos,gradle,intellij,git
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,macos,gradle,intellij,git
 
+### properties ###
+/application/src/main/resources/application.properties
+/application/src/main/resources/application-develop.properties
+/application/src/main/resources/application-local.properties
+
 ### Git ###
 # Created by git for backups. To disable backups in Git:
 # $ git config --global mergetool.keepBackup false
@@ -214,5 +219,4 @@ gradle-app.setting
 ### Gradle Patch ###
 # Java heap dump
 *.hprof
-
 # End of https://www.toptal.com/developers/gitignore/api/java,macos,gradle,intellij,git
