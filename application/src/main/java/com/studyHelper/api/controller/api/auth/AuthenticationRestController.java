@@ -28,17 +28,13 @@ public class AuthenticationRestController {
     private final JwtTokenProvider jwtTokenProvider;
     private final AuthenticationManager authenticationManager;
 
-    @PostMapping("/login")
-    public ResponseEntity<?> authenticate(String loginId, String password) {
+    @PostMapping(value = "/login", produces = "application/json")
+    public AuthResponse authenticate(String loginId, String password) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginId, password));
             String token = jwtTokenProvider.createToken(loginId);
 
-            Map<Object, Object> model = new HashMap<>();
-            model.put("loginId", loginId);
-            model.put("token", token);
-
-            return ok(model);
+            return new AuthResponse(token, loginId);
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username or password");
         }

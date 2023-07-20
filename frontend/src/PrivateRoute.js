@@ -4,11 +4,10 @@ import { UserContext } from "./UserContext";
 import LoginPage from "./pages/login/Login";
 
 function PrivateRoute({children}) {
-    const { user } = useContext(UserContext);
-    const navigate = useNavigate();
+    console.log(localStorage.getItem("plannerUser"))
+    const user = JSON.parse(localStorage.getItem("plannerUser"));
     if (!user) {
         return <LoginPage/>;
-        // navigate('/login')
     }
     return children;
 }

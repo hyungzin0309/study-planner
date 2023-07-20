@@ -1,21 +1,21 @@
 import React, {useState, useContext} from 'react';
-import api from '../../components/api';
 import qs from 'qs';
 import {useNavigate} from "react-router-dom";
 import { UserContext } from "../../UserContext";
 import style from "./Form.css"
+import axios from "axios";
 
 
     export function LoginForm() {
-        const { login } = useContext(UserContext);
+     const { login } = useContext(UserContext);
         const [inputId, setInputId] = useState('')
         const [inputPw, setInputPw] = useState('')
         const navigate = useNavigate();
 
         // login 버튼 클릭 이벤트
         const onClickLogin = () => {
-            api.post('/api/login', qs.stringify({
-                loginId: 'fliconz',
+            axios.post('http://localhost:8080/api/login', qs.stringify({
+                loginId: 'portal',
                 password: 'clovirsm123!'
             }), {
                 headers: {
@@ -23,7 +23,7 @@ import style from "./Form.css"
                 }
             })
                 .then(res => {
-                    localStorage.setItem('plannerAppUser', JSON.stringify(res.data));
+                    localStorage.setItem('plannerUser', JSON.stringify(res.data));
                     login(res.data);
                     navigate('/')
                 })

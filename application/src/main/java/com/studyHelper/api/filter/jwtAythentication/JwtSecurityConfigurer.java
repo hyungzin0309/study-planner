@@ -13,12 +13,11 @@ public class JwtSecurityConfigurer extends SecurityConfigurerAdapter<DefaultSecu
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
-    @Override
-    public void configure(HttpSecurity http) throws Exception {
-        JwtAuthenticationFilter customFilter = new JwtAuthenticationFilter(jwtTokenProvider);
-        http.exceptionHandling(httpConfigurer -> httpConfigurer.authenticationEntryPoint(new JwtAuthenticationEntryPoint())
-                .and()
-                .addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class))
-                ;
-    }
+//    @Override
+//    public void configure(HttpSecurity http) throws Exception {
+//        JwtAuthenticationFilter customFilter = new JwtAuthenticationFilter(jwtTokenProvider);
+//        http.exceptionHandling(httpConfigurer -> httpConfigurer.authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+//                .addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class))
+//                ;
+//    }
 }

@@ -1,6 +1,7 @@
 package com.studyHelper.api.filter.jwtAythentication;
 
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,15 +11,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
+import java.util.Base64;
 import java.util.Date;
-import java.util.List;
 
 // JwtTokenProvider
 @Component
 @RequiredArgsConstructor
 public class JwtTokenProvider {
     @Value("${security.jwt.token.secret-key}")
-    private String secretKey;
+    private String secretKeyPlain;
+    private SecretKey secretKey;
 
     @Value("${security.jwt.token.expire-length}")
     private long validityInMilliseconds;
@@ -30,12 +33,20 @@ public class JwtTokenProvider {
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
 
-        return Jwts.builder()//
-                .setClaims(claims)//
-                .setIssuedAt(now)//
-                .setExpiration(validity)//
-                .signWith(SignatureAlgorithm.HS256, secretKey)//
+        return Jwts.builder()
+                .setClaims(claims)
+                .setIssuedAt(now)
+                .setExpiration(validity)
+                .signWith(getSecretKey(), SignatureAlgorithm.HS256)
                 .compact();
+    }
+
+    public SecretKey getSecretKey() {
+        if (secretKey == null) {
+            String keyBase64Encoded = Base64.getEncoder().encodeToString(secretKeyPlain.getBytes());
+            secretKey = Keys.hmacShaKeyFor(keyBase64Encoded.getBytes());
+        }
+        return secretKey;
     }
 
     public String resolveToken(HttpServletRequest req) {

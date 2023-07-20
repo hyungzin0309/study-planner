@@ -27,9 +27,13 @@ function Main() {
 
 
     const logoutFunc = () => {
+        console.log(localStorage.getItem("plannerUser"))
+        if(!localStorage.getItem("plannerUser")) {
+            navigate('/login')
+        }
         api.post('/logout')
             .then(() => {
-                localStorage.removeItem('plannerAppUser');
+                localStorage.removeItem('plannerUser');
                 logout();
                 navigate('/login'); // 로그아웃 후 로그인 페이지로 이동
             })

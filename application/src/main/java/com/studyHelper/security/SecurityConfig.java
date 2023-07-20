@@ -1,6 +1,7 @@
 package com.studyHelper.security;
 
-import com.studyHelper.api.filter.jwtAythentication.JwtSecurityConfigurer;
+import com.studyHelper.api.filter.jwtAythentication.JwtAuthenticationEntryPoint;
+import com.studyHelper.api.filter.jwtAythentication.JwtAuthenticationFilter;
 import com.studyHelper.api.filter.jwtAythentication.JwtTokenProvider;
 import jakarta.servlet.DispatcherType;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 
 import java.util.Arrays;
@@ -38,6 +41,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(jwtTokenProvider);
         http
                 .cors(cors -> cors
                         .configurationSource(request -> {
@@ -53,11 +57,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request -> request
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
                         .requestMatchers("/api/user/register").permitAll()
-                        .requestMatchers("/api/**").authenticated()
+                        .requestMatchers("/api/login").permitAll()
                         .anyRequest().authenticated()
                 )
-                .httpBasic(withDefaults())
-                .apply(new JwtSecurityConfigurer(jwtTokenProvider));
+                .logout(config -> config.logoutRequestMatcher(new AntPathRequestMatcher("/logout")))
+                .exceptionHandling(httpConfigurer -> httpConfigurer.authenticationEntryPoint(new JwtAuthenticationEntryPoint()))
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
