@@ -14,7 +14,7 @@ import style from "./Form.css"
 
         // login 버튼 클릭 이벤트
         const onClickLogin = () => {
-            api.post('/login', qs.stringify({
+            api.post('/api/login', qs.stringify({
                 loginId: 'fliconz',
                 password: 'clovirsm123!'
             }), {
