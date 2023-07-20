@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,14 +29,13 @@ public class AuthenticationRestController {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest data) {
+    public ResponseEntity<?> authenticate(String loginId, String password) {
         try {
-            String username = data.getUserName();
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
-            String token = jwtTokenProvider.createToken(username);
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginId, password));
+            String token = jwtTokenProvider.createToken(loginId);
 
             Map<Object, Object> model = new HashMap<>();
-            model.put("username", username);
+            model.put("loginId", loginId);
             model.put("token", token);
 
             return ok(model);
