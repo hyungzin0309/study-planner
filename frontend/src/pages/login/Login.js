@@ -30,7 +30,6 @@ import api from "../../components/api";
         };
 
         const pressEnter = (event) => {
-            console.log(1)
             if (event.key === 'Enter') {
                 onClickLogin()
             }

@@ -25,7 +25,6 @@ function Main() {
 
 
     const logoutFunc = () => {
-        console.log(localStorage.getItem("plannerUser"))
         if(!localStorage.getItem("plannerUser")) {
             navigate('/login')
         }

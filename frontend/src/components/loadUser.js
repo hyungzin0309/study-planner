@@ -6,7 +6,6 @@ export const useLoadUser = () => {
     const loadUser = () => {
         const stored = localStorage.getItem('plannerUser');
         if (stored) {
-            console.log(stored)
             setUser(stored);
         }
     };

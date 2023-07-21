@@ -20,7 +20,6 @@ function CreateTicket() {
 
         api.post('/api/ticket/save', newTicket)
             .then((res) => {
-                console.log(res);
                 // navigate('/');
             })
             .catch((error) => {
