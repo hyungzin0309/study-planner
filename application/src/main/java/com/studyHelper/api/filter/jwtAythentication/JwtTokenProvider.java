@@ -68,12 +68,13 @@ public class JwtTokenProvider {
 
     public boolean validateToken(String token) {
         try {
-            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+            Jws<Claims> claims = Jwts.parser().setSigningKey(getSecretKey()).parseClaimsJws(token);
             if (claims.getBody().getExpiration().before(new Date())) {
                 return false;
             }
             return true;
         } catch (JwtException | IllegalArgumentException e) {
+            e.printStackTrace();
             throw new JwtAuthenticationException("JWT 토큰이 유효하지 않습니다.");
         }
     }

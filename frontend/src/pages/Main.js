@@ -1,12 +1,10 @@
 import {useNavigate} from "react-router-dom";
 import React, {useContext} from "react";
-import { UserContext } from "../UserContext";
 import api from "../components/api";
 
 
 function Main() {
 
-    const { logout } = useContext(UserContext);
     const navigate = useNavigate();
 
     const createPlan = () => {
@@ -34,7 +32,6 @@ function Main() {
         api.post('/logout')
             .then(() => {
                 localStorage.removeItem('plannerUser');
-                logout();
                 navigate('/login'); // 로그아웃 후 로그인 페이지로 이동
             })
             .catch(error => {
