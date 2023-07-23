@@ -22,6 +22,10 @@ public class UserService {
         return user.getId();
     }
 
+    public User findByLoginId(String loginId){
+        return userRepository.findByLoginId(loginId).orElseThrow(()->new RuntimeException("존재하지 않는 로그인 아이디 : "+loginId));
+    }
+
     public User getAuthenticatedUser(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Long id = Long.parseLong(((UserDetails) authentication.getPrincipal()).getUsername());

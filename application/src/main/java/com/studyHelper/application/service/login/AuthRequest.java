@@ -1,9 +1,9 @@
-package com.studyHelper.api.controller.api.auth;
+package com.studyHelper.application.service.login;
 
 import lombok.Data;
 
 @Data
-public class AuthenticationRequest {
+public class AuthRequest {
 
     private String userName;
     private String password;

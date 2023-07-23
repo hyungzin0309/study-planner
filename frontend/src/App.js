@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import CommonLayout from "./pages/common/CommonLayout"
 import CreatePlan from "./pages/plan/CreatePlan";
 import Plan from "./pages/plan/Plan";
+import NoMatchPage from "./pages/error/NoMatchPage";
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
                         <Route path="/ticket" element={<PrivateRoute><CommonLayout><Ticket/></CommonLayout></PrivateRoute>} />
                         <Route path="/plan/create" element={<PrivateRoute><CommonLayout><CreatePlan/></CommonLayout></PrivateRoute>} />
                         <Route path="/plan" element={<PrivateRoute><CommonLayout><Plan/></CommonLayout></PrivateRoute>} />
-                    </Routes>
+                        <Route path="*" element={<PrivateRoute><NoMatchPage/></PrivateRoute>}/>
+                    </Routes>1
                 </Router>
     );
 }

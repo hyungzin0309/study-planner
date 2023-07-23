@@ -1,4 +1,4 @@
-package com.studyHelper.api.controller.api.auth;
+package com.studyHelper.api.controller.api.login;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
