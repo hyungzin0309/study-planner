@@ -1,7 +1,5 @@
 import {useNavigate} from "react-router-dom";
 import React from "react";
-import api from "../components/api";
-
 
 function Main() {
 
@@ -23,29 +21,12 @@ function Main() {
         navigate('/ticket')
     };
 
-
-    const logoutFunc = () => {
-        if(!localStorage.getItem("plannerUser")) {
-            navigate('/login')
-        }
-        api.post('/logout')
-            .then(() => {
-                localStorage.removeItem('plannerUser');
-                navigate('/login'); // 로그아웃 후 로그인 페이지로 이동
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    };
-
     return (
         <div>
-            <h2>Main</h2>
             <button onClick={createPlan}>플랜 생성</button>
             <button onClick={planList}>플랜</button>
             <button onClick={createTicket}>티켓 생성</button>
             <button onClick={ticketList}>티켓</button>
-            <button onClick={logoutFunc}>로그아웃</button>
         </div>
     );
 }

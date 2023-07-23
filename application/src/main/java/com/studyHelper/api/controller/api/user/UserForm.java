@@ -14,7 +14,7 @@ public class UserForm {
     private String loginId;
 
     private String password;
-    private String userName;
+    private String username;
     private String email;
 
     public User toEntity(BCryptPasswordEncoder passwordEncoder){
@@ -22,7 +22,7 @@ public class UserForm {
         return User.builder()
                 .loginId(this.loginId)
                 .password(passwordEncoder.encode(this.password))
-                .userName(this.userName)
+                .username(this.username)
                 .email(this.email)
                 .createdDate(LocalDateTime.now())
                 .build();

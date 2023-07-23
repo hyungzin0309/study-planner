@@ -21,8 +21,8 @@ public class LoginService {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginId, password));
             String token = jwtTokenProvider.createToken(loginId);
-            String userName = userService.findByLoginId(loginId).getUserName();
-            return new AuthResponse(token, loginId, userName);
+            String username  = userService.findByLoginId(loginId).getUsername();
+            return new AuthResponse(token, loginId, username);
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username or password");
         }

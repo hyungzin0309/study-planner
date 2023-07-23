@@ -22,12 +22,12 @@ public class Plan extends UserBaseEntity {
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User owner;
+    private User user;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
 
-    public void setOwner(User owner){
-        this.owner = owner;
+    public void setOwner(User user){
+        this.user = user;
     }
 }

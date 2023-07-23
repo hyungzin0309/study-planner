@@ -1,17 +1,22 @@
 import React, {useEffect, useState} from 'react'
 import api from "../../components/api";
+import style from "./Plan.css"
+import {useNavigate} from "react-router-dom";
 
 function Plan(){
     const [plans, setPlans] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchTickets = async () => {
+        const fetchPlans = async () => {
             const response = await api.get('/api/plan');
             setPlans(response.data);
         };
 
-        fetchTickets();
+        fetchPlans();
     }, []);
+
+    const toCreatePage = ()=>{navigate("/plan/create")}
 
     return (
         <div className="plan-container">
@@ -22,6 +27,9 @@ function Plan(){
                         <p>{plan.description}</p>
                     </div>
                 ))}
+                <div onClick={toCreatePage} className="plan-card">
+                    <h3>플랜 생성</h3>
+                </div>
             </div>
         </div>
     );

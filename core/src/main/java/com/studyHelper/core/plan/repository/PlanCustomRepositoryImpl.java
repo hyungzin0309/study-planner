@@ -25,7 +25,7 @@ public class PlanCustomRepositoryImpl implements PlanCustomRepository{
     public List<Plan> findByCondition(PlanSearchCondition condition) {
         return queryFactory
                 .select(plan)
-                .leftJoin(plan.owner, user)
+                .from(plan)
                 .where(allCondition(condition))
                 .fetch();
     }
@@ -33,7 +33,7 @@ public class PlanCustomRepositoryImpl implements PlanCustomRepository{
     private BooleanBuilder allCondition(PlanSearchCondition condition){
         BooleanBuilder builder = new BooleanBuilder();
         builder.and(textContains(condition.getText()))
-                .and(ownerEq(condition.getOwnerId()));
+                .and(userEq(condition.getOwnerId()));
         return builder;
     }
 
@@ -42,8 +42,8 @@ public class PlanCustomRepositoryImpl implements PlanCustomRepository{
                 plan.name.contains(text).or(plan.description.contains(text)) : null;
     }
 
-    private BooleanExpression ownerEq(Long ownerId){
-        return ObjectUtils.isEmpty(ownerId)?
-                null : plan.owner.isNotNull().and(plan.owner.id.eq(ownerId));
+    private BooleanExpression userEq(Long userId){
+        return ObjectUtils.isEmpty(userId)?
+                null : plan.user.isNotNull().and(plan.user.id.eq(userId));
     }
 }

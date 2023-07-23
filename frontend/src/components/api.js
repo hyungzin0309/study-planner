@@ -1,12 +1,18 @@
 import axios from 'axios';
 
-let token = localStorage.getItem('plannerUser')
 const api = axios.create({
-    baseURL: 'http://localhost:8080',
-    headers: {
-        'Authorization': 'Bearer ' + (token ? JSON.parse(localStorage.getItem('plannerUser')).token : "")
-    }
+    baseURL: 'http://localhost:8080'
 });
+
+api.interceptors.request.use((config) => {
+    const userInfo = localStorage.getItem('plannerUser');
+    if (userInfo) {
+        const token = JSON.parse(userInfo).token;
+        config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
+});
+
 
 api.interceptors.response.use(
     (response) => {
