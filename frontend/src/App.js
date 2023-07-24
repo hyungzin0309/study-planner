@@ -20,7 +20,7 @@ function App() {
                         <Route path="/login" element={<LoginForm />} />
                         <Route path="/signup" element={<SignUpForm />} />
                         <Route path="/" element={<PrivateRoute><CommonLayout><Main /></CommonLayout></PrivateRoute>} />
-                        <Route path="/ticket/create" element={<PrivateRoute><CommonLayout><CreateTicket/></CommonLayout></PrivateRoute>} />
+                        <Route path="/ticket/create/:planId" element={<PrivateRoute><CommonLayout><CreateTicket/></CommonLayout></PrivateRoute>} />
                         <Route path="/tickets/:planId" element={<PrivateRoute><CommonLayout><Tickets/></CommonLayout></PrivateRoute>} />
                         <Route path="/plan/create" element={<PrivateRoute><CommonLayout><CreatePlan/></CommonLayout></PrivateRoute>} />
                         <Route path="/plan" element={<PrivateRoute><CommonLayout><Plans/></CommonLayout></PrivateRoute>} />

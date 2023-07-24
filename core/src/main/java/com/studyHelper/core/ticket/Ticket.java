@@ -21,6 +21,7 @@ public class Ticket extends UserBaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "plan_id")
     private Plan plan;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User owner;
     @ManyToOne @JoinColumn(name = "team_id")
@@ -36,6 +37,10 @@ public class Ticket extends UserBaseEntity {
 
     public void setOwner(User owner){
         this.owner = owner;
+    }
+
+    public void setPlan(Plan plan){
+        this.plan = plan;
     }
 
     public void updateStatus(TicketStatus status){

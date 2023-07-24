@@ -1,5 +1,6 @@
 package com.studyHelper.application.service.plan;
 
+import com.studyHelper.application.service.common.exception.NotFoundException;
 import com.studyHelper.application.service.user.UserService;
 import com.studyHelper.core.plan.Plan;
 import com.studyHelper.core.plan.PlanSearchCondition;
@@ -26,5 +27,9 @@ public class PlanService {
     public List<Plan> findByUser(PlanSearchCondition condition) {
         condition.setUserId(userService.getAuthenticatedUser().getId());
         return planRepository.findByCondition(condition);
+    }
+
+    public Plan findById(Long id){
+        return planRepository.findById(id).orElseThrow(()->new NotFoundException("찾을 수 없는 Plan"));
     }
 }

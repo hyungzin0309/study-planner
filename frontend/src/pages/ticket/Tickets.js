@@ -5,8 +5,8 @@ import {useParams} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
 
 const Tickets = () => {
-    const [planId] = useParams();
-    console.log(planId)
+    const params = useParams();
+    const planId = params.planId;
     const [tickets, setTickets] = useState([]);
     const [viewMode, setViewMode] = useState('list');
     const navigate = useNavigate();

@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import api from '../../components/api';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 function CreateTicket() {
+    const param = useParams();
+    const planId = param.planId;
+    console.log(planId)
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [importance, setImportance] = useState('LOW');
@@ -18,9 +22,9 @@ function CreateTicket() {
             importance
         };
 
-        api.post('/api/ticket/save', newTicket)
+        api.post(`/api/ticket/save/${planId}`, newTicket)
             .then((res) => {
-                // navigate('/');
+                navigate(`/tickets/${planId}}`);
             })
             .catch((error) => {
                 console.error(error);
