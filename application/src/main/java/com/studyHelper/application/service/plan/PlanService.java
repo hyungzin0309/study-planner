@@ -23,9 +23,8 @@ public class PlanService {
         planRepository.save(plan);
     }
 
-
     public List<Plan> findByUser(PlanSearchCondition condition) {
-        condition.setOwnerId(userService.getAuthenticatedUser().getId());
+        condition.setUserId(userService.getAuthenticatedUser().getId());
         return planRepository.findByCondition(condition);
     }
 }

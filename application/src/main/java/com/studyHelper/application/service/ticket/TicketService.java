@@ -1,5 +1,8 @@
 package com.studyHelper.application.service.ticket;
 
+import com.studyHelper.application.Exception.ForbiddenException;
+import com.studyHelper.application.service.plan.PlanAuthService;
+import com.studyHelper.application.service.plan.PlanService;
 import com.studyHelper.core.ticket.Ticket;
 import com.studyHelper.core.ticket.TicketStatus;
 import com.studyHelper.core.ticket.repository.TicketRepository;
@@ -18,6 +21,7 @@ public class TicketService {
 
     private final TicketRepository ticketRepository;
     private final UserService userService;
+    private final PlanAuthService planAuthService;
 
     public void save(Ticket ticket){
         ticket.setOwner(userService.getAuthenticatedUser());
@@ -25,8 +29,10 @@ public class TicketService {
     }
 
     @Transactional(readOnly = true)
-    public List<Ticket> findByUser(TicketSearchCondition condition){
-        condition.addUserCondition(userService.getAuthenticatedUser().getId());
+    public List<Ticket> findByCondition(TicketSearchCondition condition, Long planId){
+        if(!planAuthService.hasAuthority(planId,userService.getAuthenticatedUser().getId()))
+            throw new ForbiddenException("Plan 에 대한 접근권한 없음.");
+        condition.addPlanCondition(planId);
         return ticketRepository.findByCondition(condition);
     }
 

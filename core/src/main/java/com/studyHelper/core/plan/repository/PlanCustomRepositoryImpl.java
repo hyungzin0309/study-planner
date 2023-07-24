@@ -13,7 +13,6 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 
 import static com.studyHelper.core.plan.QPlan.plan;
-import static com.studyHelper.core.user.QUser.user;
 
 @Repository
 @RequiredArgsConstructor
@@ -33,7 +32,7 @@ public class PlanCustomRepositoryImpl implements PlanCustomRepository{
     private BooleanBuilder allCondition(PlanSearchCondition condition){
         BooleanBuilder builder = new BooleanBuilder();
         builder.and(textContains(condition.getText()))
-                .and(userEq(condition.getOwnerId()));
+                .and(userEq(condition.getUserId()));
         return builder;
     }
 

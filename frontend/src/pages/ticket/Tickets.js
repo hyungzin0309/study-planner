@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../components/api';
 import './Ticket.css';
+import {useParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
-const Ticket = () => {
+const Tickets = () => {
+    const [planId] = useParams();
+    console.log(planId)
     const [tickets, setTickets] = useState([]);
     const [viewMode, setViewMode] = useState('list');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchTickets = async () => {
-            const response = await api.get('/api/ticket');
+            const response = await api.get(`/api/ticket/${planId}`);
             setTickets(response.data);
         };
 
         fetchTickets();
     }, []);
+
+    const toCreatTicketPage = () =>{navigate(`/ticket/create/${planId}`)}
 
     return (
         <div className="ticket-container">
@@ -56,10 +63,13 @@ const Ticket = () => {
                             <p>완료일: {ticket.completedDate || "정보 없음"}</p>
                         </div>
                     ))}
+                    <div className="ticket-card" onClick={toCreatTicketPage}>
+                        <h3>티켓 생성</h3>
+                    </div>
                 </div>
             )}
         </div>
     );
 };
 
-export default Ticket;
+export default Tickets;

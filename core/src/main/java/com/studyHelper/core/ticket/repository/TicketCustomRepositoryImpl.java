@@ -41,7 +41,8 @@ public class TicketCustomRepositoryImpl implements TicketCustomRepository{
         BooleanBuilder builder = new BooleanBuilder();
         return builder
                 .and(textContains(condition.getText()))
-                .and(statusEqual(condition.getStatus()));
+                .and(statusEqual(condition.getStatus()))
+                .and(planEqual(condition.getPlanId()));
     }
 
     private BooleanExpression textContains(String text){
@@ -51,6 +52,10 @@ public class TicketCustomRepositoryImpl implements TicketCustomRepository{
 
     private BooleanExpression statusEqual(TicketStatus status){
         return ObjectUtils.isEmpty(status) ? null : ticket.ticketStatus.eq(status);
+    }
+
+    private BooleanExpression planEqual(Long planId){
+        return ticket.plan.id.eq(planId);
     }
 
 }

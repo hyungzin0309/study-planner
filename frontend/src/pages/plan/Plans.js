@@ -3,7 +3,7 @@ import api from "../../components/api";
 import style from "./Plan.css"
 import {useNavigate} from "react-router-dom";
 
-function Plan(){
+function Plans(){
     const [plans, setPlans] = useState([]);
     const navigate = useNavigate();
 
@@ -17,12 +17,12 @@ function Plan(){
     }, []);
 
     const toCreatePage = ()=>{navigate("/plan/create")}
-
+    const toTicketPage = (planId)=>{navigate(`/tickets/${planId}`)}
     return (
         <div className="plan-container">
             <div className="plan-cards">
                 {plans.map((plan, index) => (
-                    <div key={index} className="plan-card">
+                    <div onClick={() => toTicketPage(plan.id)} key={index} className="plan-card">
                         <h3>{plan.name}</h3>
                         <p>{plan.description}</p>
                     </div>
@@ -35,4 +35,4 @@ function Plan(){
     );
 }
 
-export default Plan;
+export default Plans;

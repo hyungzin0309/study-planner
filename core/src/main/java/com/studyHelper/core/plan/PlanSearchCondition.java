@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class PlanSearchCondition {
     private String text;
-    private Long ownerId;
+    private Long userId;
 }

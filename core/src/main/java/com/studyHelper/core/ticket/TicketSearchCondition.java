@@ -13,10 +13,10 @@ public class TicketSearchCondition {
     private TicketStatus status;
     private String startDate;
     private String endDate;
-    private Long userId;
+    private Long planId;
 
-    public TicketSearchCondition addUserCondition(Long userId){
-        this.userId = userId;
+    public TicketSearchCondition addPlanCondition(Long planId){
+        this.planId = planId;
         return this;
     }
 
