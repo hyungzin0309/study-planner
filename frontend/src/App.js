@@ -25,7 +25,7 @@ function App() {
                         <Route path="/plan/create" element={<PrivateRoute><CommonLayout><CreatePlan/></CommonLayout></PrivateRoute>} />
                         <Route path="/plan" element={<PrivateRoute><CommonLayout><Plans/></CommonLayout></PrivateRoute>} />
                         <Route path="*" element={<PrivateRoute><NoMatchPage/></PrivateRoute>}/>
-                    </Routes>1
+                    </Routes>
                 </Router>
     );
 }

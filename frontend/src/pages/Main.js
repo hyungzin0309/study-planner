@@ -23,10 +23,7 @@ function Main() {
 
     return (
         <div>
-            <button onClick={createPlan}>플랜 생성</button>
             <button onClick={planList}>플랜</button>
-            <button onClick={createTicket}>티켓 생성</button>
-            <button onClick={ticketList}>티켓</button>
         </div>
     );
 }
