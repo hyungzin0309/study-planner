@@ -8,7 +8,7 @@ function Main() {
     const createPlan = () => {
         navigate('/plan/create')
     };
-
+//
     const planList = () => {
         navigate('/plan')
     };
