@@ -1,14 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../components/api';
-import './Ticket.css';
+import './Ticket.scss';
 import {useParams} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
+
+
+// 티켓 생성 모달 컴포넌트
+const CreateTicketModal = ({ onClose }) => {
+    // 모달 내부에서 필요한 상태 및 함수를 정의하세요
+    // 예: 티켓 제목, 설명 등
+
+    const createTicket = () => {
+        // 티켓 생성 로직...
+
+        // 티켓 생성 후 모달 닫기
+        onClose();
+    };
+
+    return (
+        <div className="modal" tabIndex="-1" style={{display: 'block'}}>
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">티켓 생성</h5>
+                        <button type="button" className="btn-close" onClick={onClose}></button>
+                    </div>
+                    <div className="modal-body">
+                        {/* 티켓 생성을 위한 입력 필드... */}
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-primary" onClick={createTicket}>생성</button>
+                        <button type="button" className="btn btn-secondary" onClick={onClose}>취소</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const Tickets = () => {
     const params = useParams();
     const planId = params.planId;
     const [tickets, setTickets] = useState([]);
     const [viewMode, setViewMode] = useState('list');
+    const [showCreateModal, setShowCreateModal] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,14 +54,27 @@ const Tickets = () => {
         fetchTickets();
     }, [planId]);
 
-    const toCreatTicketPage = () =>{navigate(`/ticket/create/${planId}`)}
+
+    const toCreateTicketPage = () => {
+        setShowCreateModal(true);
+    };
+
+    const closeCreateModal = () => {
+        setShowCreateModal(false);
+    };
 
     return (
         <div className="ticket-container">
-            <div className="view-mode-icons">
-                <button onClick={() => setViewMode('list')}>리스트 아이콘</button>
-                <button onClick={() => setViewMode('card')}>카드 아이콘</button>
+            <div className={"top-menu"}>
+                <div className={"ticket-btns"}>
+                    <button className={"create-ticket-btn"} onClick={toCreateTicketPage}>+ 티켓 생성</button>
+                </div>
+                <div className="view-mode-icons">
+                    <button onClick={() => setViewMode('list')}>리스트 아이콘</button>
+                    <button onClick={() => setViewMode('card')}>카드 아이콘</button>
+                </div>
             </div>
+            {showCreateModal && <CreateTicketModal onClose={closeCreateModal} />}
 
             {viewMode === 'list' ? (
                 <table className="ticket-table">
@@ -62,7 +110,7 @@ const Tickets = () => {
                             <p>완료일: {ticket.completedDate || "정보 없음"}</p>
                         </div>
                     ))}
-                    <div className="ticket-card" onClick={toCreatTicketPage}>
+                    <div className="ticket-card" onClick={toCreateTicketPage}>
                         <h3>티켓 생성</h3>
                     </div>
                 </div>

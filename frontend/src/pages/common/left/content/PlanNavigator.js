@@ -31,13 +31,13 @@ function PlanNavigator(){
             <div onClick={() => setIsPlanVisible(!isPlanVisible)} className={"plan-navigator"}>Plan</div>
             {isPlanVisible && (
                 <div onClick={toCreatePage} className={`plan-navigator toggle-content ${isPlanVisible ? 'visible' : ''}`}>
-                    <span>Create plan</span>
+                    <span>+ Create plan</span>
                 </div>
             )}
             {isPlanVisible && (
                 plans.map((plan, index) => (
                     <div onClick={() => toTicketPage(plan.id)} key={index} className={"plan-navigator toggle-content"}>
-                        <span>{plan.name}</span>
+                        <span>- &nbsp;{plan.name}</span>
                     </div>
                 ))
             )}

@@ -10,6 +10,7 @@ import CommonLayout from "./pages/common/CommonLayout"
 import CreatePlan from "./pages/plan/CreatePlan";
 import Plans from "./pages/plan/Plans";
 import NoMatchPage from "./pages/error/NoMatchPage";
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 function App() {
