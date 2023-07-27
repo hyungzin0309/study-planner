@@ -1,6 +1,8 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import api from "../../../components/api";
+import PlanNavigator from "./content/PlanNavigator"
+import "./Left.scss"
 
 function Left(){
     const userInfo = JSON.parse(localStorage.getItem("plannerUser"));
@@ -21,10 +23,15 @@ function Left(){
     };
 
     return (
-    <div>
-        <span>{ userInfo.userName}님 </span>
-        <span onClick={logoutFunc}> 로그아웃</span>
-    </div>
+        <div class="left">
+            <div class="user-info">
+                <span class="user-name">{ userInfo.userName}</span>님
+                <span class="logout-btn" onClick={logoutFunc}>로그아웃</span>
+            </div>
+            <div class="contents">
+                <PlanNavigator/>
+            </div>
+        </div>
     )
 }
 

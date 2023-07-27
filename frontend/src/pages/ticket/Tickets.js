@@ -16,9 +16,8 @@ const Tickets = () => {
             const response = await api.get(`/api/ticket/${planId}`);
             setTickets(response.data);
         };
-
         fetchTickets();
-    }, []);
+    }, [planId]);
 
     const toCreatTicketPage = () =>{navigate(`/ticket/create/${planId}`)}
 

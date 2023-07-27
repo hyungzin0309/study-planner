@@ -1,0 +1,22 @@
+.left {
+    .user-info {
+        padding: 10px;
+        height:20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .user-name {
+            font-weight:500;
+        }
+
+        .logout-btn {
+            font-size:0.8em;
+            margin-left:10px;
+        }
+    }
+    .contents {
+        padding-top:200px;
+        padding-left:30px;
+    }
+}
