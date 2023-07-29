@@ -23,12 +23,12 @@ function Left(){
     };
 
     return (
-        <div class="left">
-            <div class="user-info">
-                <span class="user-name">{ userInfo.userName}</span>님
-                <span class="logout-btn" onClick={logoutFunc}>로그아웃</span>
+        <div className="left">
+            <div className="user-info">
+                <span className="user-name">{ userInfo.userName}</span>님
+                <span className="logout-btn" onClick={logoutFunc}>로그아웃</span>
             </div>
-            <div class="contents">
+            <div className="contents">
                 <PlanNavigator/>
             </div>
         </div>

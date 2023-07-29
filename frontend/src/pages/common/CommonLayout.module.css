@@ -20,15 +20,20 @@ html, body {
     flex-grow: 1;
     width:85%;
     height:100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
-    height:20%;
+    height:10%;
     width:100%;
-    background-color: lightgrey;;
+    background-color: lightgrey;
 }
 
 
 .content {
+    flex-grow: 1;
+    height:90%;
+    overflow: scroll;
     padding:40px;
 }

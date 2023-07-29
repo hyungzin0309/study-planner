@@ -22,7 +22,7 @@
 </style>
 <form action="/login" method="post">
     <div class="login-form">
-        <div class="table-wrapper">
+        <div className="table-wrapper">
             <table>
                 <tr>
                     <th>아이디</th>

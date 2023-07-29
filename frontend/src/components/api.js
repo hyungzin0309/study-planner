@@ -20,8 +20,8 @@ api.interceptors.response.use(
     },
     (error) => {
         if (error.response && error.response.status === 401) {
-            localStorage.removeItem('plannerUser');
-            window.location.href = '/login';
+            // localStorage.removeItem('plannerUser');
+            // window.location.href = '/login';
         }
 
         if (error.response && error.response.status === 404) {
